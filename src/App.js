@@ -3,7 +3,7 @@ function App() {
     <>
       {/* first let's setup the UI */}
       <section className="section">
-        <form>
+        <form autoComplete="off">
           <input
             type="text"
             name="search"
@@ -12,14 +12,14 @@ function App() {
           />
           <button>Search</button>
         </form>
-        <article>
+        <article className="title">
           <h1>First posts tiltle here</h1>
           {/* here href will get the link from API call */}
           <a href="">Read full story</a>
         </article>
 
         {/* building how each card will look like */}
-        <article>
+        <article className="cards">
           <div>
             <h2>Heading 2</h2>
             <ul>

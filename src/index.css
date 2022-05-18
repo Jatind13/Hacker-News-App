@@ -20,10 +20,14 @@ body {
   font-size: 16px;
   background-color: #111827;
 }
+form {
+  display: flex;
+  margin-bottom: 2rem;
+}
 
 input {
   font-family: inherit;
-  font-size: 1.5rem;
+  font-size: 1rem;
   outline: none;
   background-color: transparent;
   padding: 1.25rem 1rem;
@@ -35,7 +39,7 @@ input {
 
 button {
   font-family: inherit;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   outline: none;
   background-color: fff;
   padding: 1.25rem 1rem;
@@ -49,10 +53,66 @@ button:hover {
   color: blueviolet;
   cursor: pointer;
 }
+/* ===================================
+Cards and the search result section
+======================================
+ */
 .section {
   padding: 1.25rem;
 }
+.section .title h1 {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.section .title a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: antiquewhite;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 2rem;
+}
+.section .title a:hover {
+  color: #fff;
+}
+.section .cards div {
+  background-color: #768ab7;
+  padding: 1rem;
+  border-radius: 0.625rem;
+}
 
+.section .cards div ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.section .cards div ul li {
+  color: rgb(31, 41, 51);
+}
+
+.section .cards div ul li a {
+  color: rgb(22, 41, 60);
+  text-decoration: underline;
+}
+
+.section .cards div ul li a:hover {
+  color: #fff;
+}
+/* handling cards ordering */
+.section .cards {
+  display: grid;
+  grid-template-columns: 1 fr;
+  grid-gap: 1rem;
+}
+.section .cards div p {
+  color: rgb(12, 73, 79);
+}
+/* Adding responsivness */
 @media (min-width: 1024px) {
   /* let's target the form */
   form {
@@ -65,5 +125,12 @@ button:hover {
   .section {
     max-width: 992px;
     margin: auto;
+  }
+}
+
+/* for cards */
+@media (min-width: 768px) {
+  .section .cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
