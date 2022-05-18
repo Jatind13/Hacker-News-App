@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is the project aka clone of Hacker News website, Hacker News (sometimes abbreviated as HN) is a social news website focusing on computer science and entrepreneurship. It is run by the investment fund and startup incubator Y Combinator. In general, content that can be submitted is defined as "anything that gratifies one's intellectual curiosity."[1]
 
-This project is using [https://hn.algolia.com/api](HN Search API) which is basically built on top of Algolia Search's API.
+This project is using [https://hn.algolia.com/api] (HN Search API) which is basically built on top of Algolia Search's API.
 It enables developers to access Hacker News data programmatically using a REST API
 
 ## Available Scripts
