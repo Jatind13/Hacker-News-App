@@ -18,7 +18,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  background-color: #111827;
+  background-image: linear-gradient(
+    to right,
+    rgba(23, 56, 72),
+    rgba(23, 97, 85)
+  );
 }
 form {
   display: flex;
@@ -40,7 +44,7 @@ Category
 
 input {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.25rem;
   outline: none;
   background-color: transparent;
   padding: 1.25rem 1rem;
@@ -97,7 +101,7 @@ Cards and the search result section
 }
 .section .title h1 {
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #fff;
   text-align: center;
   margin-bottom: 1rem;
@@ -137,6 +141,10 @@ Cards and the search result section
 
 .section .cards div ul li a:hover {
   color: #fff;
+  cursor: pointer;
+}
+#readFull {
+  cursor: pointer;
 }
 /* handling cards ordering */
 .section .cards {
@@ -156,10 +164,14 @@ Cards and the search result section
   }
   input {
     width: 100%;
+    font-size: 2rem;
   }
   .section {
     max-width: 992px;
     margin: auto;
+  }
+  .title h1 {
+    font-size: 2rem;
   }
 }
 

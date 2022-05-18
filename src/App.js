@@ -5,6 +5,9 @@ import { format } from "date-fns";
 //we can also write it as
 //import format from "date-fns/format"
 //installing date fns package which I am going to use
+//immporting react-toastify package
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 //----------------------------------
 //Now let's setup our stateValues
 function App() {
@@ -37,22 +40,52 @@ function App() {
     fetchArticles();
     //after the data we will mark isloading as false
     setIsLoading(false);
-  }, []);
+  }, [query]); // we have our dependcy array depending on query what this means is every time that the query state body changes we need all of this to run
+
+  // code for handling submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!text) {
+      //do something when someone submit the form without any input , so for that we will use react-toastify package
+      toast("Input is empty");
+    } else {
+      setQuery(text); //query is the state value which we are using to query the API so when we change it we need this to run again.
+      setText(""); //set the text to empty string when submitted
+    }
+  };
 
   return (
     <>
       {/* first let's setup the UI */}
       <section className="section">
-        <form autoComplete="off">
+        {/* we need some function which works on the submission of the search */}
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          {/* now let's get ahead and create this function */}
           <input
             type="text"
             name="search"
             id="search"
+            value={text} //which is for default search value
+            onChange={(e) => setText(e.target.value)} //so basically what ever text we are typing it is going to populate the useState of the text
             placeholder="Search the news"
           />
           <button>Search</button>
         </form>
         {/*  now let's work on the loading stage so what I am going to do is that will grab all the card data and then check that if it is loading is true then I want div with spinner else i want all the data fragmented as one and returned  */}
+
+        {/* toast container */}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
 
         {isLoading ? (
           <div className="spinner"></div>
@@ -63,7 +96,12 @@ function App() {
               {/* getting first news as a large title from API */}
               <h1>{largeTitle.title}</h1>
               {/* here href will get the link from API call */}
-              <a href={largeTitle.url} target="_blank" rel="noreferrer">
+              <a
+                href={largeTitle.url}
+                target="_blank"
+                rel="noreferrer"
+                id="readFull"
+              >
                 Read full story
               </a>
             </article>
@@ -83,20 +121,33 @@ function App() {
                 <p>Date(point)</p>
               </div> */}
               {/* now let's go ahead and populate our cards and basically map over our data and get data like author date points and objectId which is basically unique */}
-              {items.map(({ author, created_at, title, url, objectId }) => (
-                <div key={objectId}>
-                  <h2>{title}</h2>
-                  <ul>
-                    <li>By {author}</li>
-                    <li>
-                      <a href={url} target="_blank" rel="noreferrer">
-                        Read Full Story
-                      </a>
-                    </li>
-                  </ul>
-                  <p>{created_at}</p>
-                </div>
-              ))}
+              {items.map(
+                ({
+                  author,
+                  created_at,
+                  title,
+                  url,
+                  objectId,
+                  points,
+                  num_comments,
+                }) => (
+                  <div key={objectId}>
+                    <h2>{title}</h2>
+                    <ul>
+                      <li>By {author}</li>
+                      <li>
+                        <a href={url} target="_blank" rel="noreferrer">
+                          Read Full Story
+                        </a>
+                      </li>
+                    </ul>
+                    {/* so we have installed the date format package and now is the time to use it */}
+                    <p>{format(new Date(created_at), "dd MMMM yyyy ")}</p>
+                    <p>Points:{points}</p>
+                    <p>Comments:{num_comments}</p>
+                  </div>
+                )
+              )}
             </article>
           </>
         )}
