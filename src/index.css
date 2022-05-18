@@ -24,6 +24,19 @@ form {
   display: flex;
   margin-bottom: 2rem;
 }
+/* =======================================
+Category
+========================================= 
+*/
+.category {
+  color: whitesmoke;
+  margin-bottom: 1rem;
+}
+.category span {
+  color: aquamarine;
+  font-weight: bold;
+  text-transform: capitalize;
+}
 
 input {
   font-family: inherit;
@@ -52,6 +65,28 @@ button:hover {
   border-color: black;
   color: blueviolet;
   cursor: pointer;
+}
+/* ====================================
+Spinner
+=================================== */
+.spinner {
+  width: 5rem;
+  height: 5rem;
+  border: 0.1rem solid rgb(171, 165, 209);
+  border-top-color: red;
+  border-radius: 50%;
+  animation: spin 0.2s infinite linear;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 /* ===================================
 Cards and the search result section
