@@ -1,10 +1,10 @@
 // start fetching our data
 import { useState, useEffect } from "react";
 //importing date method
-import { format } from "date-fns";
-//we can also write it as
 //import format from "date-fns/format"
 //installing date fns package which I am going to use
+import { format } from "date-fns";
+//we can also write it as
 //immporting react-toastify package
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
